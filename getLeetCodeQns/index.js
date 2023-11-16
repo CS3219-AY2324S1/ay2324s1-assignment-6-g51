@@ -1,6 +1,5 @@
 const functions = require('@google-cloud/functions-framework');
 const axios = require('axios');
-const puppeteer = require('puppeteer');
 
 functions.http('helloHttp', async (req, res) => {
   try {
@@ -22,15 +21,30 @@ functions.http('helloHttp', async (req, res) => {
         };
       });
 
-    //res.status(200).send(questions[0])
-    const puppeteer = require('puppeteer');
+    const response = await axios.post(
+    'https://leetcode.com/graphql/',
+    {
+        query: `
+        query getQuestionDetail($titleSlug: String!) {
+            question(titleSlug: $titleSlug) {
+            content
+            }
+        }
+        `,
+        variables: {
+        titleSlug: questions[0].title,
+        },
+    },
+    {
+        headers: {
+        'Content-Type': 'application/json',
+        },
+    }
+    );  
 
-    // get the data from the leetcode question
-    //const HTMLPage = await axios.get("https://leetcode.com/problems/" + questions[0].title )
-    const HTMLPage = 'https://leetcode.com/problems/' + questions[0].title;
-    //console.log(HTMLPage.data)
-    const newPage = await getHTMLPage(HTMLPage);
-    res.status(200).send(newPage)
+    const questionDescription = response.data.data.question.content;
+    console.log(questionDescription)
+    res.status(200).send(questionDescription)
   } else {
     console.error('Invalid data structure in the LeetCode API response');
   }
@@ -40,19 +54,3 @@ functions.http('helloHttp', async (req, res) => {
   }
 
 });
-
-async function getHTMLPage(url) {
-    const browser = await puppeteer.launch({ headless: 'new' });
-    const page = await browser.newPage();
-  
-    // Navigate to the URL
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
-  
-    // Get the HTML content after JavaScript execution
-    const htmlContent = await page.content();
-  
-    // Close the browser
-    await browser.close();
-  
-    return htmlContent;
-  }
