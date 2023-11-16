@@ -9,7 +9,9 @@ To run the serverless function hosted by google use this url: `https://asia-sout
 
 ## Implementation
 
-Currently, number of questions we get from leetcode is 100. This is because the question bank is very large, it makes it easier for tester to test. Also, we will delete the entire database before each run of the function to prevent users from flooding the database and also there is no point to keep duplicated questions.
+Currently, number of questions we get from leetcode is 100. This is because the question bank is very large, it makes it easier for tester to test.
+
+Note that questions added by serverless function for the first time will be appended. But subsequent run will remain the same because question id is the same and thus entries will be replaced and not appended.
 
 If user want to get the whole question bank
 
