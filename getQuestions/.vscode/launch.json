@@ -1,16 +1,16 @@
 {
   "configurations": [
     {
-      "name": "Deploy Cloud Function",
-      "type": "cloudcode.cloudfunctions",
-      "request": "launch",
-      "functionName": "getQuestions",
-      "region": "asia-southeast1",
-      "gen": "GEN_2",
-      "revision": "getquestions-00001-ded",
-      "entryPoint": "helloHttp",
-      "runtime": "nodejs20",
-      "testInput": ""
+        "name": "Deploy Cloud Function",
+        "type": "cloudcode.cloudfunctions",
+        "request": "launch",
+        "functionName": "getQuestions",
+        "region": "asia-southeast1",
+        "gen": "GEN_2",
+        "revision": "getquestions-00001-ded",
+        "entryPoint": "helloHttp",
+        "runtime": "nodejs20",
+        "testInput": ""
     }
-  ]
+]
 }
