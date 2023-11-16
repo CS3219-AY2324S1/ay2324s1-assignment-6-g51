@@ -86,14 +86,14 @@ functions.http('helloHttp', async (req, res) => {
             i++;
         }
 
-        const rootRef = ref(database);
-        remove(rootRef)
-            .then(() => {
-                console.log('All entries removed successfully.');
-        })
-            .catch((error) => {
-                console.error('Error removing entries:', error);
-        });
+        // const rootRef = ref(database);
+        // remove(rootRef)
+        //     .then(() => {
+        //         console.log('All entries removed successfully.');
+        // })
+        //     .catch((error) => {
+        //         console.error('Error removing entries:', error);
+        // });
         for (let j = 0; j < result.length; j++) {
             currQn = result[j];
             currTitle = currQn.title;
