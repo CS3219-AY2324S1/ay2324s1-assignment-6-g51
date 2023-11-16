@@ -36,7 +36,7 @@ functions.http('helloHttp', async (req, res) => {
             totalSubmitted: question.stat.total_submitted,
             };
         });
-
+        //console.log(questions.length)
         i = 0
         while (i < 100) {
 
@@ -118,7 +118,7 @@ functions.http('helloHttp', async (req, res) => {
 });
 
 function writeUserData(qnId, title, description, difficulty, db) {
-    set(ref(db, 'users/' + qnId), {
+    set(ref(db, 'questions/' + qnId), {
       title: title,
       description: description,
       difficulty : difficulty
