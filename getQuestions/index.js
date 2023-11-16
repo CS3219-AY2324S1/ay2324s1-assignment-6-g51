@@ -65,9 +65,9 @@ functions.http('helloHttp', async (req, res) => {
             //console.log('GraphQL Response:', graphqlResponse); // Log the GraphQL response
 
             const content = graphqlResponse.data.data.question.content;
-            const title = questions[50].title;
+            const title = questions[i].title;
             //console.log(title);
-            const difficultyLvl = questions[50].difficulty;
+            const difficultyLvl = questions[i].difficulty;
             let difficulty = null;
             if (difficultyLvl === 3) {
                 difficulty = "Hard"
